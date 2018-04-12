@@ -310,6 +310,7 @@ aside p {
     list-style-type: none;
     padding: 0 1.3em 0 1.3em;
     cursor: pointer;
+    border-left: 3px solid transparent;
 }
 
 .c-items__delete ul li.active {
