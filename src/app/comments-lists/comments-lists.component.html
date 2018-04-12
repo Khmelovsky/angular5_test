@@ -1,0 +1,45 @@
+<main class="c-wrap">
+  <section class="c-items">
+    <div class="c-items__header">
+        <h2 class="c-items__title">Items</h2>
+      </div>
+      <div class="c-items__new">
+        <form action="">
+          <input type="text" [(ngModel)]="FirstText" name="first" placeholder="Type name here...">
+          <button type="button" class="button" (click)="addOne()" >Add new</button>
+        </form>
+      </div>
+      <div class="c-items__delete">
+        
+        <ul >
+          <li *ngFor="let item of _testDataService.items; index as i" [class.active]="i === selectedi1" (click)="selectOne(i)">
+            <div class="c-item__element">
+              <p>{{item.text}}<span class="counter">{{item.comments.length}}</span></p>
+              <button type="button" class="delete-button" (click)="_testDataService.deleteItem(i)">Delete</button>
+            </div>
+          </li>  
+        </ul>
+      </div>
+    </section>
+  
+    <section class="c-comments">
+      <div class="c-items__header">
+        <h2 class="c-items__title">Comments #{{selectedi1+1}}</h2>
+      </div>
+      <div class="c-comments__wrap">
+        <ul *ngIf="_testDataService.items.length > 0">
+          <li *ngFor="let comment2 of _testDataService.items[selectedi1].comments; index as i">
+            <div class="c-comments__square" [class.orange]="i % 2 == 0" [class.navy]="i % 2 != 0"></div>
+            <p>{{comment2}}</p>
+          </li>
+  
+        </ul>
+      </div>
+      <div class="c-comment__field">
+        <form action="">
+          <div class="c-comments__square gray"></div>
+          <textarea [(ngModel)]="SecondText" (keydown.control.enter)="addOther()" name="second"></textarea>
+        </form>
+      </div>
+    </section>
+  </main>
